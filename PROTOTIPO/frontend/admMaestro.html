@@ -12,13 +12,7 @@
     </header>
     <div class="header">
         <h1>Panel del Profesor</h1>
-        <button class="btn-new">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-            </svg>
-            Nueva Pregunta
-        </button>
+        
     </div>
 
     <div class="stats-container">
@@ -30,7 +24,7 @@
                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
             <h2 class="stat-title">Total Estudiantes</h2>
-            <button class="stat-value" onclick="alert('Mostrar detalles de estudiantes')">45</button>
+            <button class="stat-value" onclick="redirectToStudents()">45</button>
         </div>
 
         <div class="stat-card">
@@ -47,6 +41,10 @@
         function redirectToQuestions() {
              //Redirigir a otra página después de cerrar el modal
              window.location.href = "gpregunta.html"; 
+         }
+         function redirectToStudents() {
+             //Redirigir a otra página después de cerrar el modal
+             window.location.href = "g-estudiantes.html"; 
          }
     </script>
 </body>
