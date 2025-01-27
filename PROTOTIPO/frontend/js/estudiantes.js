@@ -11,23 +11,44 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function mostrarResultado(estudiantes) {
-    const estudiantesList = document.getElementById('estudiantesList'); // Contenedor del HTML
+    const estudiantesList = document.getElementById('estudiantesList');
     estudiantesList.innerHTML = ''; // Limpiar contenido previo
 
     if (estudiantes && estudiantes.length > 0) {
-        // Iteramos sobre los estudiantes
+        // Crear la tabla
+        const tabla = document.createElement('table');
+        tabla.className = 'tabla-estudiantes';
+
+        // Crear encabezado de la tabla
+        const thead = document.createElement('thead');
+        thead.innerHTML = `
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Curso</th>
+                <th>Paralelo</th>
+                <th>Puntaje</th>
+            </tr>
+        `;
+        tabla.appendChild(thead);
+
+        // Crear cuerpo de la tabla
+        const tbody = document.createElement('tbody');
+        
         estudiantes.forEach(estudiante => {
-            const div = document.createElement('div');
-            div.className = 'estudiante-item'; // Clase para aplicar estilos
-            div.innerHTML = `
-                <p><strong>Nombre:</strong> ${estudiante.nombre}</p>
-                <p><strong>Apellido:</strong> ${estudiante.apellido}</p>
-                <p><strong>Curso:</strong> ${estudiante.curso}</p>
-                <p><strong>Paralelo:</strong> ${estudiante.paralelo}</p>
-                <p><strong>Puntaje:</strong> ${estudiante.puntaje}</p>
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${estudiante.nombre}</td>
+                <td>${estudiante.apellido}</td>
+                <td>${estudiante.curso}</td>
+                <td>${estudiante.paralelo}</td>
+                <td>${estudiante.puntaje}</td>
             `;
-            estudiantesList.appendChild(div); // Agregamos el div al contenedor
+            tbody.appendChild(tr);
         });
+
+        tabla.appendChild(tbody);
+        estudiantesList.appendChild(tabla);
     } else {
         // Mostrar un mensaje si no hay estudiantes
         estudiantesList.innerHTML = '<p>No se encontraron estudiantes.</p>';
