@@ -40,16 +40,6 @@ const questionSchema = new mongoose.Schema({
     }
 });
 
-// Validación adicional para asegurar que solo una opción sea correcta
-//questionSchema.pre('save', function(next) {
- // const correctOptions = this.options.filter(option => option.isCorrect);
-//  if (correctOptions.length !== 1) {
-//      next(new Error('Debe haber exactamente una opción correcta'));
-//  }
-//  next();
-//});
-
-// Crear el modelo a partir del esquema
 const Question = mongoose.model('Question', questionSchema);
 
 module.exports = Question;

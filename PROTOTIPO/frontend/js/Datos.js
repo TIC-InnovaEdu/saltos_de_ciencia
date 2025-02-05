@@ -19,4 +19,3 @@ document.getElementById('insertar-usuario').addEventListener('submit', function(
       $('#success-modal').modal('show');
 });
      
-
