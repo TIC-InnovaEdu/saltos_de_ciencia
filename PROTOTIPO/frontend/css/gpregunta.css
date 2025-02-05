@@ -1,18 +1,67 @@
+
 body {
-    font-family: Arial, sans-serif;
-    color: #333;
+   
+    font-family: sans-serif;
+    color: #fff;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
+    justify-content:center; 
     align-items: center;
     min-height: 100vh;
+    font-weight: 100;  
+    vertical-align: middle; 
+    background-size: cover; /* Ajusta la imagen para que cubra toda la pantalla sin distorsionarse */
+    background-position: center;
+    
 }
-.btn-new {
-    margin-top: 30px; /* Espacio arriba */
-    margin-bottom: 30px; /* Espacio abajo */
-    background: #1a73e8;
-    color: white;
+
+/*yo puse para el boton*/
+button{
+    border:0;
+    background-image: linear-gradient(
+        150deg,
+        #9500,
+        #09F,
+        #00DDFF
+    );
+    
+    border-radius: 2px;
+color:#fff;
+display: flex;
+font-size: 18px;
+padding: 4px;
+cursor: pointer;
+transition: .3s;
+}
+
+button span{
+    background-color: #111;
+    padding: 16px 44px;
+    border-radius: 6px;
+    transition: .3s;
+    
+}
+button:hover span {
+    background: none;
+}
+button:active {
+    transform: scale(0,9)
+}
+
+button {
+    position: absolute;
+    right: 100px; /* Ajusta la posición desde la derecha - de 140 tmb se veia bien */
+}
+/*hasta  aqui*/
+
+
+/*.btn-new {
+    margin-top: 50px; /* Espacio arriba */
+    /*margin-bottom: 30px; /* Espacio abajo */
+    /*background: #1a73e8;
+    color: rgb(179, 6, 6);
     border: none;
     padding: 15px 30px;
     border-radius: 8px;
@@ -22,35 +71,44 @@ body {
     align-items: center;
     gap: 10px;
     transition: transform 0.2s, background 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    box-shadow: 0 4px 6px rgba(15, 185, 6, 0.1);
+}*/
 
-.btn-new:hover {
+/*.btn-new:hover {
     background: #1557b0;
     transform: scale(1.05);
-}
+}*/
 
-h1 {
-    background-color: rgba(255, 255, 255, 0.64);
-    margin-top: 30px; /* Espacio arriba */
+h1 {            
+    font-family: 'Agency FB';
+    line-height: 4.5;
+    margin-top: 150px; /* Espacio arriba */
     margin-bottom: 60px; /* Espacio abajo */
     margin: 0;
-    font-size: 45px;
-    text-align: center;
+    font-size: 90px;  
+    text-align: left;
+    height: 250px ;/*yo le agg xd-- te sirve para bajar o subir la tabla*/
 }
 
 .main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
-    background-color: #004a97;
-    color: white;
+     background-color: #00000099;
+    color: rgb(189, 33, 195); 
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
+    z-index: 1000; 
+    height: 120px ;
 }
 
+
+
 .logo {
-    height: 60px;
+    height: 85px;
     transition: transform 0.3s ease;
 }
 
@@ -59,18 +117,20 @@ h1 {
     display: none; /* Oculta el formulario inicialmente */
 }
 
-#formulario, #listado {
-    background: linear-gradient(120deg, #f4f4f4,  #9fe0f4);
+#formulario, #listado {  /**/
+    background: linear-gradient(45deg, #181e1e, #01202e);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    margin: 70px;
     padding: 20px;
-    width: 80%;
-    max-width: 800px;
-}
+    width: 95%; 
+    max-width: 1200px;
+    position: relative; 
+  }
+  
 
 h2 {
-    border-bottom: 2px solid #007BFF;
+    border-bottom: 2px solid #f4f0f0;
     padding-bottom: 10px;
     margin-bottom: 20px;
     color: #007BFF;
@@ -87,14 +147,14 @@ h2 {
     width: 88%;
 }
 
-label {
+label { /*aplica negrita al titulo de la tabla*/
     font-weight: bold;
 }
 
-input[type="text"] {
+input[type="text"] {  
     width: 70%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 4px;
     box-sizing: border-box;
 }
@@ -104,7 +164,7 @@ input[type="checkbox"] {
 }
 
 button {
-    background-color: #007BFF;
+    background-color: #d60fab;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -114,7 +174,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #15b300;
 }
 
 #error {
@@ -127,9 +187,9 @@ button:hover {
     margin-top: 20px;
 }
 
-.question-item {
-    background-color: #123d4100;
-    border: 2px solid #2862b8f6;
+.question-item {    
+    background-color: #d10bdf00;
+    border: 2px solid #b85828f6;
     border-radius: 4px;
     padding: 10px;
     margin-bottom: 10px;
@@ -155,18 +215,71 @@ button:hover {
 .tabla-estudiantes {
     width: 100%;
     border-collapse: collapse;
+    margin: 0; 
+    padding: 0; 
+    background-color: transparent;
+    /*backdrop-filter:blur(7px);*/ /*lo comente para ver brillo del mouse..no funciono*/
+    box-shadow: 0 .4rem .8rem rgba(239, 238, 238, 0.333);
+    
 }
 
-.tabla-estudiantes th, .tabla-estudiantes td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+
+.tabla-estudiantes th, .tabla-estudiantes td {  
+   /* border: 1px solid #21098b;  */
+    padding: 15px;
+    text-align: center;
+    background-color: transparent;
 }
 
 .tabla-estudiantes thead {
-    background-color: #f2f2f2;
+    background-color: rgba(187, 5, 5, 0.766);
 }
 
 .tabla-estudiantes tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: rgba(0, 0, 0, 0.43);     
 }
+
+
+.tabla-estudiantes tbody tr:hover td {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+
+/*esto puse yo */
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  #formulario::after, #listado::after,
+  #formulario::before, #listado::before {
+    content: '';
+    position: absolute;
+    height: 100%; 
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+  }
+  #formulario::before, #listado::before {
+    filter: blur(1.5rem); /*tenia 1.5*/
+    opacity: 0.3;
+  }
+
+  @keyframes spin{
+    from{
+      --angle: 0deg;
+    }
+    to{
+      --angle: 360deg;
+    }
+  }
+
+
+  
