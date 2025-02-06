@@ -83,12 +83,12 @@ button {
 h1 {            
     font-family: 'Agency FB';
     line-height: 4.5;
-    margin-top: 150px; /* Espacio arriba */
-    margin-bottom: 60px; /* Espacio abajo */
+    margin-top: 150px; 
+    margin-bottom: 60px; 
     margin: 0;
     font-size: 90px;  
     text-align: left;
-    height: 250px ;/*yo le agg xd-- te sirve para bajar o subir la tabla*/
+    height: 250px ;
 }
 
 .main-header {
@@ -115,7 +115,7 @@ h1 {
 
 
 #formulario {
-    display: none; /* Oculta el formulario inicialmente */
+    display: none; 
 }
 
 #formulario, #listado {  /**/
