@@ -58,10 +58,10 @@ button {
 /*hasta  aqui*/
 
 
-/*.btn-new {
+.btn-new {
     margin-top: 50px; /* Espacio arriba */
-    /*margin-bottom: 30px; /* Espacio abajo */
-    /*background: #1a73e8;
+    margin-bottom: 30px; /* Espacio abajo */
+    background: #1a73e8;
     color: rgb(179, 6, 6);
     border: none;
     padding: 15px 30px;
@@ -73,12 +73,12 @@ button {
     gap: 10px;
     transition: transform 0.2s, background 0.3s ease;
     box-shadow: 0 4px 6px rgba(15, 185, 6, 0.1);
-}*/
+}
 
-/*.btn-new:hover {
+.btn-new:hover {
     background: #1557b0;
     transform: scale(1.05);
-}*/
+}
 
 h1 {            
     font-family: 'Agency FB';
@@ -246,32 +246,6 @@ button:hover {
 }
 
 
-/*esto puse yo */
-@property --angle{
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
-  }
-
-  #formulario::after, #listado::after,
-  #formulario::before, #listado::before {
-    content: '';
-    position: absolute;
-    height: 100%; 
-    width: 100%;
-    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    z-index: -1;
-    padding: 3px;
-    border-radius: 10px;
-    animation: 3s spin linear infinite;
-  }
-  #formulario::before, #listado::before {
-    filter: blur(1.5rem); /*tenia 1.5*/
-    opacity: 0.3;
-  }
 
   @keyframes spin{
     from{
