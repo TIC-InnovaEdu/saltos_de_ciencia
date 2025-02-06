@@ -118,7 +118,7 @@ h1 {
     display: none; 
 }
 
-#formulario, #listado {  /**/
+#formulario, #listado { 
     background: linear-gradient(45deg, #181e1e, #01202e);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -148,7 +148,7 @@ h2 {
     width: 88%;
 }
 
-label { /*aplica negrita al titulo de la tabla*/
+label { 
     font-weight: bold;
 }
 
@@ -219,14 +219,13 @@ button:hover {
     margin: 0; 
     padding: 0; 
     background-color: transparent;
-    /*backdrop-filter:blur(7px);*/ /*lo comente para ver brillo del mouse..no funciono*/
     box-shadow: 0 .4rem .8rem rgba(239, 238, 238, 0.333);
     
 }
 
 
 .tabla-estudiantes th, .tabla-estudiantes td {  
-   /* border: 1px solid #21098b;  */
+
     padding: 15px;
     text-align: center;
     background-color: transparent;
