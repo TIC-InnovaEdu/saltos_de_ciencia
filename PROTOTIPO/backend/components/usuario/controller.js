@@ -20,7 +20,7 @@ async function obtener_estudiantes() {
     return new Promise((resolve, reject) => {
         storage.obtener_estudiantes({})
             .then((resultados) => {
-                console.log('Resultados obtenidos:', resultados);
+                //console.log('Resultados obtenidos:', resultados);
                 resolve(resultados); // Devuelve todos los registros
             })
             .catch((error) => reject(`Error al obtener usuarios: ${error.message}`));
@@ -36,7 +36,7 @@ async function obtener_usuario() {
                 if (resultados.length > 0) {
                     // Ordena por fecha_creacion en orden descendente y toma el primer resultado
                     const ultimoRegistro = resultados.sort((a, b) => b.fecha_creacion - a.fecha_creacion)[0];
-                    console.log('Último registro:', ultimoRegistro); // Agrega un log para depuración
+                    //console.log('Último registro:', ultimoRegistro); // Agrega un log para depuración
                     // Devuelve solo el nombre y el apellido
                     const resultadoFiltrado = {
                         nombre: ultimoRegistro.nombre,
