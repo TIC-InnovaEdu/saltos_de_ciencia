@@ -1,15 +1,4 @@
-//startButton : iniciar juego
-//moveButton : saltar
-
-//los de las opciones dec respuestas son input
-
-//  Cuando gana
-//playAgainButton : jugar otra vez
-//exitButton : salir del juego
-
-//  Cuando pierde
-//retryButton : reintentar 
-
+const socket = io(); // Conectar al servidor WebSocket
 
 let currentQuestionIndex = 0;
 let lives = 3;
@@ -124,7 +113,6 @@ function checkAnswer(selectedOption) {
     }
 }
 
-
 function saltar() {
     const feedbackElement = document.querySelector('.feedback');
     if (feedbackElement) {
@@ -188,8 +176,6 @@ function scrollToElement(element) {
     });
 }
 
-
-
 function moveToCat() {
     const boy = document.getElementById('boy');
     const cat = document.getElementById('cat');
@@ -205,42 +191,8 @@ function moveToCat() {
     }, 400);
 
     setTimeout(() => {
-        
         showVictoryAnimation();
     }, 900);
-}
-
-function animateJump(startX, endX, duration) {
-    const element = document.getElementById('boy');
-    const startY = parseInt(window.getComputedStyle(element).bottom, 10); // Posición inicial en Y (bottom)
-    const maxHeight = 150; // Altura máxima del salto
-
-    const frameRate = 60; // Número de fotogramas por segundo
-    const totalFrames = Math.round((duration / 1000) * frameRate); // Número total de fotogramas
-    let currentFrame = 0;
-
-    const distanceX = endX - startX;
-    const distanceY = maxHeight - startY;
-    const stepX = distanceX / totalFrames;
-
-    const interval = setInterval(() => {
-        currentFrame++;
-
-        // Calcular la posición X
-        const newX = startX + stepX * currentFrame;
-        element.style.left = `${newX}px`;
-
-        // Calcular la posición Y usando una parábola (efecto de salto)
-        const progress = currentFrame / totalFrames;
-        const newY = startY + distanceY * Math.sin(Math.PI * progress);
-        element.style.bottom = `${newY}px`;
-
-        if (currentFrame >= totalFrames) {
-            clearInterval(interval);
-            element.style.left = `${endX}px`;
-            element.style.bottom = `${startY}px`; // Asegurar que el personaje aterrice en el punto de partida en Y
-        }
-    }, 1000 / frameRate);
 }
 
 function updateLives() {
@@ -334,11 +286,8 @@ function resetGame() {
     document.getElementById('score').innerText = `Puntos: ${score}`; // Restablecer la visualización de la puntuación
     updateLives();
     displayQuestion();
-    
 }
 
-// Modificar la función exitGame existente
-// En tu código del juego
 async function exitGame() {
     try {
         const response = await fetch('/usuario/updateScore', {
@@ -367,3 +316,30 @@ async function exitGame() {
         window.location.href = 'Tabla.html';
     }
 }
+
+// Escuchar eventos de botones presionados
+socket.on('botonPresionado', (data) => {
+    console.log(`Botón presionado: ${data.boton}`);
+
+    switch (data.boton) {
+        case 'respuesta1':
+            movePointerToAnswer(0); // Selecciona la primera respuesta
+            break;
+        case 'respuesta2':
+            movePointerToAnswer(1); // Selecciona la segunda respuesta
+            break;
+        case 'respuesta3':
+            movePointerToAnswer(2); // Selecciona la tercera respuesta
+            break;
+        case 'saltar':
+            saltar(); // Realiza el salto
+            break;
+        case 'salir':
+            exitGame(); // Sale del juego
+            break;
+        case 'cancelar':
+            // Lógica para cancelar (puedes agregar una función específica si es necesario)
+            console.log("Cancelar presionado");
+            break;
+        }
+});
