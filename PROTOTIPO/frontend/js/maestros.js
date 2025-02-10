@@ -41,7 +41,6 @@ document.getElementById('inicio-sesion').addEventListener('submit', function(eve
       return response.json();
   })
   .then(data => {
-      alert('Inicio de sesión exitoso.');
       // Muestra el modal de Bootstrap
       $('#success-modal').modal('show');
   })
