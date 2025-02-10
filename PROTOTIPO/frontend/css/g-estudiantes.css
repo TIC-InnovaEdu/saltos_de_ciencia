@@ -101,27 +101,20 @@ h1 {
     position: fixed;
     top: 0;
     left: 0;
+    justify-content: space-between;
     display: flex;
     align-items: center;
-     background-color: #00000099;
-    color: rgb(189, 33, 195); 
+    background-color: #004a97;
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
     z-index: 1000; 
     height: 120px ;
-}
-.main-header {
-    display: flex;
-    align-items: center;
-    background-color: #004a97;
     color: white;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
 }
 
-.main-nav ul {
+
+.main-nav ul{
     list-style: none;
     display: flex;
     gap: 20px;
@@ -152,6 +145,7 @@ h1 {
 #formulario {
     display: none; 
 }
+
 #listado { 
     background: linear-gradient(45deg, #181e1e, #01202e);
     border-radius: 8px;

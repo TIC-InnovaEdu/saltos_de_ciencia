@@ -22,15 +22,6 @@ app.use(cors()); // Habilitar CORS
 // Middleware para servir archivos estáticos
 app.use('/audio', express.static('../audio/angry-birds-videojuegos-.mp3'));
 
-// Middleware para políticas de seguridad
-app.use((req, res, next) => {
-  res.setHeader(
-    'Content-Security-Policy',
-    "default-src 'self'; frame-src 'self' https://www.youtube.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.jquery.com https://cdn.jsdelivr.net https://maxcdn.bootstrapcdn.com; style-src 'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com; img-src 'self' data: blob:; connect-src 'self';"
-  );
-  next();
-});
-
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({ extended: false }));
 
