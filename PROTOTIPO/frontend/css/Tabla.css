@@ -70,7 +70,7 @@ body {
     background: linear-gradient(45deg, #181e1e, #01202e);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 70px;
+    margin: 70px auto;  /* Centrar horizontalmente */
     padding: 20px;
     width: 95%; 
     max-width: 1200px; 
