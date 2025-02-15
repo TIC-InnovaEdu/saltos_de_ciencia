@@ -366,3 +366,12 @@ socket.on('botonPresionado', (data) => {
             break;
         }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const startButton = document.getElementById("startButton");
+    const gameImage = document.getElementById("game-image");
+
+    startButton.addEventListener("click", function () {
+        gameImage.style.display = "none";  // Oculta la imagen al hacer clic en el botón
+    });
+});
