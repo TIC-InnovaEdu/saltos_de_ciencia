@@ -37,7 +37,7 @@ async function fetchQuestions() {
     try {
         const response = await fetch('/preguntas');
         questions = await response.json();
-        shuffleArray(questions); // Mezcla las preguntas
+        shuffleArray(questions);  //Mezcla las preguntas
     } catch (error) {
         console.error('Error fetching questions:', error);
     }
@@ -104,7 +104,10 @@ function checkAnswer(selectedOption) {
         setTimeout(() => moveButton.classList.remove('highlight'), 1000);
         
     } else {
-        score -= 20;
+        //score -= 20;
+        // Restar 20 puntos pero asegurarse de que el puntaje no sea menor a 0
+        score = Math.max(0, score - 20);
+        
         feedbackElement.innerHTML = '<i class="fas fa-times-circle"></i> Respuesta incorrecta. Inténtalo de nuevo.';
         feedbackElement.classList.add('incorrect');
         document.getElementById('score').innerText = `Puntos: ${score}`;
@@ -114,6 +117,16 @@ function checkAnswer(selectedOption) {
         setTimeout(() => {
             feedbackElement.classList.remove('incorrect');
             feedbackElement.innerHTML = '';
+
+            // Eliminar la pregunta actual del array y mostrar otra aleatoria
+            questions.splice(currentQuestionIndex, 1);
+
+            if (questions.length > 0) {
+                currentQuestionIndex = Math.floor(Math.random() * questions.length);
+                displayQuestion();
+            } else {
+                document.getElementById('questionContainer').innerHTML = '<h2>¡No quedan más preguntas!</h2>';
+            }
         }, 1000);
 
         if (lives === 0) {
@@ -122,61 +135,6 @@ function checkAnswer(selectedOption) {
     }
 }
 
-/* function checkAnswer(selectedOption) {
-    const feedbackElement = document.getElementById('feedback');
-    const correctAnswer = questions[currentQuestionIndex].answer;
-    
-    if (selectedOption === correctAnswer) {
-        score += 20;
-        feedbackElement.innerHTML = '<i class="fas fa-check-circle"></i> ¡Respuesta correcta!';
-        feedbackElement.classList.add('correct');
-
-        // Habilitar el botón "Mover"
-        const moveButton = document.getElementById('moveButton');
-        moveButton.style.display = 'block';
-
-        // Enfocar automáticamente el botón "Mover"
-        moveButton.focus();
-
-        // Opcional: Agregar un efecto visual al botón
-        moveButton.classList.add('highlight');
-        setTimeout(() => moveButton.classList.remove('highlight'), 1000);
-        
-    } else {
-        // Resta una vida si se equivoca
-        lives--;
-        updateLives();
-
-        feedbackElement.innerHTML = '<i class="fas fa-times-circle"></i> Respuesta incorrecta. Cambiando pregunta...';
-        feedbackElement.classList.add('incorrect');
-
-        // Restar 20 puntos pero asegurarse de que el puntaje no sea menor a 0
-        score = Math.max(0, score - 20);
-    }
-
-    // Actualizar la puntuación en pantalla
-    document.getElementById('score').innerText = `Puntos: ${score}`;
-
-    setTimeout(() => {
-        feedbackElement.classList.remove('incorrect');
-        feedbackElement.innerHTML = '';
-
-        // Eliminar la pregunta actual del array y mostrar otra aleatoria
-        questions.splice(currentQuestionIndex, 1);
-
-        if (questions.length > 0) {
-            currentQuestionIndex = Math.floor(Math.random() * questions.length);
-            displayQuestion();
-        } else {
-            document.getElementById('questionContainer').innerHTML = '<h2>¡No quedan más preguntas!</h2>';
-        }
-    }, 1000);
-
-    // Si se quedan sin vidas, mostrar la pantalla de reintento
-    if (lives === 0) {
-        setTimeout(() => showRetryModal(), 1200);
-    }
-}    */
 
 function saltar() {
     const feedbackElement = document.querySelector('.feedback');
@@ -403,7 +361,7 @@ socket.on('botonPresionado', (data) => {
             exitGame(); // Sale del juego
             break;
         case 'cancelar':
-            // Lógica para cancelar (puedes agregar una función específica si es necesario)
+            resetGame();
             console.log("Cancelar presionado");
             break;
         }
